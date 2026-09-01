@@ -1,0 +1,122 @@
+---
+layout: default
+title: "Contact Us | Samayartha Advisory | Manufacturing & Operations Consultant Bengaluru"
+description: >-
+  Start a conversation with Samayartha Advisory about what's constraining growth, margin, or execution in your business right now.
+keywords: "contact manufacturing consultant India, operations advisory"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">CONTACT</div>
+    <h1 style="max-width:20ch;">Let's talk about what's constraining growth right now.</h1>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-copy">
+        <p>The best way to start is a short conversation about what's constraining growth, margin, or execution in your business right now.</p>
+        <div class="no-deck">No pitch deck required for the first call</div>
+
+        <div class="alt-path">
+          <div class="label">Not ready to talk yet?</div>
+          <p>Take the 5-minute Constraint Diagnostic first — you'll get an instant reading, and it gives us a sharper starting point for the conversation.</p>
+          <a class="btn btn-secondary" href="https://samayartha.github.io/Diagnostic-Checklist/" target="_blank" rel="noopener">Take the diagnostic →</a>
+        </div>
+
+        <div class="alt-path">
+          <div class="label">Prefer to reach out directly?</div>
+          <p style="margin-bottom:6px;">
+            <a href="mailto:vijay@samayartha.com" style="color:var(--navy); font-weight:600; text-decoration:none; border-bottom:1.5px solid var(--gold);">vijay@samayartha.com</a>
+          </p>
+          <p style="margin-bottom:0;">
+            <a href="tel:+919740925992" style="color:var(--navy); font-weight:600; text-decoration:none; border-bottom:1.5px solid var(--gold);">+91 97409 25992</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <form id="contactForm">
+          <div class="c-row" style="border-top:none;padding-top:0;">
+            <div class="label">Email *</div>
+            <input type="email" id="cEmail" required class="c-input" placeholder="you@company.com" />
+          </div>
+          <div class="c-row">
+            <div class="label">Name *</div>
+            <input type="text" id="cName" required class="c-input" placeholder="Your name" />
+          </div>
+          <div class="c-row">
+            <div class="label">Company Name *</div>
+            <input type="text" id="cCompany" required class="c-input" placeholder="Your company" />
+          </div>
+          <div class="c-row">
+            <div class="label">Contact No *</div>
+            <input type="tel" id="cPhone" required class="c-input" placeholder="+91 ..." />
+          </div>
+          <div class="c-row">
+            <div class="label">Designation</div>
+            <input type="text" id="cDesignation" class="c-input" placeholder="e.g. CEO, Plant Head" />
+          </div>
+          <div class="c-row">
+            <div class="label">Industry</div>
+            <input type="text" id="cIndustry" class="c-input" placeholder="e.g. Auto components" />
+          </div>
+          <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="width:100%; margin-top:8px;">Submit →</button>
+          <p style="font-size:12px; color:var(--slate); margin:14px 0 0; line-height:1.6;">Everything you share here is confidential — used only to prepare for a conversation with you, never shared, sold, or stored beyond that.</p>
+        </form>
+        <div id="contactSuccess" style="display:none; text-align:center; padding:20px 0;">
+          <div style="font-size:24px; color:var(--navy); margin-bottom:10px;">✓</div>
+          <p style="font-size:15px; color:var(--navy-70); margin:0;">Thanks — your enquiry has been sent. We'll be in touch shortly.</p>
+        </div>
+        <div id="contactError" style="display:none; color:#b00020; font-size:14px; margin-top:12px; text-align:center;"></div>
+        <div class="entity-note">Samayartha Advisory (OPC) Private Limited · Bengaluru, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const CONTACT_FORMSPREE = "https://formspree.io/f/mnpqawgn";
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = document.getElementById('contactSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    const payload = {
+      _subject: "New Contact form enquiry — " + document.getElementById('cName').value,
+      type: "contact_form",
+      email: document.getElementById('cEmail').value,
+      name: document.getElementById('cName').value,
+      company: document.getElementById('cCompany').value,
+      phone: document.getElementById('cPhone').value,
+      designation: document.getElementById('cDesignation').value || "(not provided)",
+      industry: document.getElementById('cIndustry').value || "(not provided)"
+    };
+    fetch(CONTACT_FORMSPREE, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(function(response){
+      if (response.ok) {
+        form.style.display = "none";
+        document.getElementById('contactSuccess').style.display = "block";
+      } else {
+        return response.json().catch(function(){ return {}; }).then(function(data){
+          throw new Error((data && data.error) || ("Form service returned " + response.status));
+        });
+      }
+    }).catch(function(err){
+      btn.disabled = false;
+      btn.textContent = "Submit →";
+      var errEl = document.getElementById('contactError');
+      if (errEl) {
+        errEl.style.display = "block";
+        errEl.textContent = "Sorry — something went wrong sending your enquiry. Please try again, or email vijay@samayartha.com directly.";
+      }
+      console.error("Contact form submission failed:", err);
+    });
+  });
+</script>

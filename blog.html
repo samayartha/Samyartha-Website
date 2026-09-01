@@ -1,0 +1,31 @@
+---
+layout: default
+title: "Perspectives | Samayartha Advisory"
+description: >-
+  Notes on operating models, governance, and the constraint-based approach to
+  fixing what's actually limiting growth in mid-market manufacturing and B2B firms.
+keywords: "manufacturing operations blog, operating model, KPI design, Theory of Constraints"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">PERSPECTIVES</div>
+    <h1 style="max-width:22ch;">Notes from the work.</h1>
+    <p class="lede">Short, practical pieces on the constraints, systems, and governance questions that come up across engagements.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="post-list">
+      {% for post in site.posts %}
+      <a class="post-list-item" href="{{ post.url | relative_url }}">
+        <div class="post-list-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+        <h2>{{ post.title }}</h2>
+        {% if post.subtitle %}<p>{{ post.subtitle }}</p>{% endif %}
+        <span class="link">Read more &rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

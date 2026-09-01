@@ -1,0 +1,45 @@
+title: Samayartha Advisory
+description: >-
+  Founder-led advisory for mid-market Indian manufacturing, industrial and B2B
+  technology companies. Structured, evidence-based diagnostics, operating model
+  redesign, and transformation PMO support. Based in Bengaluru, serving clients
+  across India.
+url: "https://www.samayartha.com"
+theme_color: "#19196F"
+
+author:
+  name: Vijay Harlapur
+  title: Founder & Principal Advisor
+
+# Markdown / build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Permalinks: pages keep the same top-level .html filenames/URLs as before
+# (index.html -> "/", services.html -> "/services.html", etc.) so nothing
+# already indexed by Google or linked externally breaks. Blog posts get a
+# clean /blog/:title/ URL since the blog section is brand new.
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: /blog/:title/
+
+# GitHub-Pages-safe plugins only (no custom plugin allowlist needed)
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Don't publish source/build files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - node_modules
+  - "*.gemspec"
+
+
