@@ -1,0 +1,19 @@
+<header>
+  <div class="container nav-row">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Samayartha Advisory logo">
+      <span>SAMAYARTHA ADVISORY</span>
+    </a>
+    <nav id="mainNav">
+      <ul>
+        {% for item in site.data.nav %}
+        <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <button class="mobile-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg class="icon-menu" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 5h18M2 11h18M2 17h18" stroke="#19196F" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" style="display:none;"><path d="M4 4l14 14M18 4L4 18" stroke="#19196F" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>

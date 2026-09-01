@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<article>
+  <div class="container article-hero">
+    <div class="eyebrow">Perspectives</div>
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+    <div class="byline">{{ site.author.name }}, {{ site.author.title }}, Samayartha Advisory &middot; {{ page.date | date: "%B %-d, %Y" }}</div>
+  </div>
+
+  <div class="article-body">
+
+    {{ content }}
+
+    {% unless page.hide_cta %}
+    <div class="article-cta">
+        <p>{{ page.cta_text | default: "Samayartha Advisory helps leadership teams design performance and governance systems that hold up in changing environments." }}</p>
+        <a class="btn-gold" href="{{ '/contact.html' | relative_url }}">Start a Conversation</a>
+    </div>
+    {% endunless %}
+
+    {% unless page.hide_bio %}
+    <div class="author-bio">
+        <div class="initial">VH</div>
+        <p><strong>About the author.</strong> Vijay Harlapur is the Founder &amp; Principal Advisor at Samayartha Advisory, a TOCICO-certified consultant with 30 years of operational leadership across manufacturing, high-tech, and industrial sectors &mdash; including hands-on supply chain and systems work with i2/JDA/Blue Yonder and Ramco platforms. He works with mid-sized manufacturing and B2B firms to diagnose the constraint that's actually limiting performance, not just the one that's easiest to measure.</p>
+    </div>
+    {% endunless %}
+
+  </div>
+</article>
